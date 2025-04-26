@@ -45,4 +45,9 @@ export const clbData = [
         "chineseText" :"地毯髒",
         "englishText" : "CARPET DIRTY",
     },
+    {
+        "img": "",
+        "chineseText" :"<G204>護條壞掉",
+        "englishText" : "<G204>BUMPER BROKEN",
+    },
 ]
