@@ -236,7 +236,10 @@ function App() {
   const getItemsPerView = () => {
     if (isMobile) return 1;
     if (isTablet) return 2;
-    return 3;
+    if (window.innerWidth >= 2400) return 6; // Ultra wide
+    if (window.innerWidth >= 1800) return 5; // Extra large
+    if (window.innerWidth >= 1400) return 4; // Large (better for QHD)
+    return 3; // Standard desktop
   };
 
   const itemsPerView = getItemsPerView();
@@ -262,6 +265,30 @@ function App() {
       if (relativeIndex === 0) return 'card-left-edge';
       if (relativeIndex === 1) return 'card-center';
       if (relativeIndex === 2) return 'card-right-edge';
+    }
+    if (itemsPerView === 4) {
+      // Extra large desktop - 4 cards
+      if (relativeIndex === 0) return 'card-left-edge';
+      if (relativeIndex === 1) return 'card-left-inner';
+      if (relativeIndex === 2) return 'card-right-inner';
+      if (relativeIndex === 3) return 'card-right-edge';
+    }
+    if (itemsPerView === 5) {
+      // Ultra wide - 5 cards
+      if (relativeIndex === 0) return 'card-left-edge';
+      if (relativeIndex === 1) return 'card-left-inner';
+      if (relativeIndex === 2) return 'card-center';
+      if (relativeIndex === 3) return 'card-right-inner';
+      if (relativeIndex === 4) return 'card-right-edge';
+    }
+    if (itemsPerView === 6) {
+      // Super ultra wide - 6 cards
+      if (relativeIndex === 0) return 'card-left-edge';
+      if (relativeIndex === 1) return 'card-left-inner';
+      if (relativeIndex === 2) return 'card-center';
+      if (relativeIndex === 3) return 'card-center';
+      if (relativeIndex === 4) return 'card-right-inner';
+      if (relativeIndex === 5) return 'card-right-edge';
     }
     return '';
   };

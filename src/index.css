@@ -25,6 +25,25 @@
     --search-max-width: 680px;
 }
 
+/* Large Desktop Variables */
+@media screen and (min-width: 1400px) {
+    :root {
+        --content-max-width: 1400px;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    :root {
+        --content-max-width: 1600px;
+    }
+}
+
+@media screen and (min-width: 2400px) {
+    :root {
+        --content-max-width: 2000px;
+    }
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -168,6 +187,19 @@ body {
     min-height: calc(100vh - 200px);
 }
 
+/* Dynamic height based on viewport for larger screens */
+@media screen and (min-width: 1400px) {
+    .app-main {
+        min-height: calc(100vh - 180px);
+        display: flex;
+        align-items: center;
+    }
+    
+    .carousel-container {
+        width: 100%;
+    }
+}
+
 .carousel-container {
     max-width: var(--content-max-width);
     margin: 0 auto;
@@ -189,6 +221,19 @@ body {
     cursor: grabbing;
 }
 
+/* Larger viewport padding for bigger screens */
+@media screen and (min-width: 1400px) {
+    .carousel-viewport {
+        padding: var(--spacing-large) var(--spacing-medium);
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .carousel-viewport {
+        padding: calc(var(--spacing-large) * 1.5) var(--spacing-medium);
+    }
+}
+
 .carousel-track {
     display: flex;
     gap: var(--spacing-medium);
@@ -199,6 +244,46 @@ body {
     flex: 0 0 calc((100vw - 40px - 40px) / 3);
     max-width: calc((100vw - 40px - 40px) / 3);
     pointer-events: auto;
+}
+
+/* Large Desktop Styles (1400px and up) - Better for QHD monitors */
+@media screen and (min-width: 1400px) {
+    .carousel-container {
+        max-width: 1400px;
+        padding: 0 var(--spacing-large) var(--spacing-section);
+    }
+    
+    .carousel-slide {
+        flex: 0 0 calc((100% - 60px) / 4);
+        max-width: calc((100% - 60px) / 4);
+        min-width: 300px;
+    }
+}
+
+/* Extra Large Desktop Styles (1800px and up) */
+@media screen and (min-width: 1800px) {
+    .carousel-container {
+        max-width: 1600px;
+    }
+    
+    .carousel-slide {
+        flex: 0 0 calc((100% - 80px) / 5);
+        max-width: calc((100% - 80px) / 5);
+        min-width: 280px;
+    }
+}
+
+/* Ultra Wide Desktop Styles (2400px and up) */
+@media screen and (min-width: 2400px) {
+    .carousel-container {
+        max-width: 2000px;
+    }
+    
+    .carousel-slide {
+        flex: 0 0 calc((100% - 100px) / 6);
+        max-width: calc((100% - 100px) / 6);
+        min-width: 300px;
+    }
 }
 
 /* Card Styles with Smart Positioning */
@@ -249,6 +334,19 @@ body {
     transform: scale(1.05) !important;
 }
 
+/* Additional positioning classes for larger screens */
+.card.card-left-inner:hover,
+.card.card-left-inner:focus-within,
+.card.card-left-inner:focus {
+    transform: scale(1.05) translateX(15px) !important;
+}
+
+.card.card-right-inner:hover,
+.card.card-right-inner:focus-within,
+.card.card-right-inner:focus {
+    transform: scale(1.05) translateX(-15px) !important;
+}
+
 /* Prevent text selection during drag */
 .carousel-viewport * {
     user-select: none;
@@ -274,6 +372,78 @@ body {
     background-color: #f5f5f7;
     position: relative;
     padding-top: 60%;
+}
+
+/* Larger cards on bigger screens - utilizing viewport height */
+@media screen and (min-width: 1400px) {
+    .card-image-container {
+        padding-top: min(75%, calc(40vh - 120px));
+    }
+    
+    .card-title {
+        font-size: clamp(16px, 2.5vw, 20px);
+        margin-bottom: 8px;
+    }
+    
+    .card-description {
+        font-size: clamp(14px, 2vw, 17px);
+        line-height: 1.5;
+    }
+    
+    .card-text-content {
+        padding: var(--spacing-medium) var(--spacing-medium) var(--spacing-large);
+    }
+    
+    .card {
+        min-height: calc(50vh - 100px);
+        max-height: calc(70vh - 120px);
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .card-image-container {
+        padding-top: min(80%, calc(45vh - 140px));
+    }
+    
+    .card-title {
+        font-size: clamp(18px, 2.5vw, 22px);
+        margin-bottom: 10px;
+    }
+    
+    .card-description {
+        font-size: clamp(15px, 2vw, 18px);
+        line-height: 1.6;
+    }
+    
+    .card-text-content {
+        padding: var(--spacing-large) var(--spacing-medium) var(--spacing-large);
+    }
+    
+    .card {
+        min-height: calc(55vh - 120px);
+        max-height: calc(75vh - 140px);
+    }
+}
+
+@media screen and (min-width: 2400px) {
+    .card-image-container {
+        padding-top: min(85%, calc(40vh - 120px));
+    }
+    
+    .card-title {
+        font-size: clamp(19px, 2.5vw, 24px);
+        margin-bottom: 12px;
+    }
+    
+    .card-description {
+        font-size: clamp(16px, 2vw, 19px);
+        line-height: 1.6;
+    }
+    
+    .card {
+        min-height: calc(50vh - 100px);
+        max-height: calc(70vh - 120px);
+    }
 }
 
 .card-image {
@@ -375,6 +545,29 @@ body {
     justify-content: center;
     gap: var(--spacing-tiny);
     margin-top: var(--spacing-large);
+}
+
+/* Responsive pagination spacing */
+@media screen and (min-width: 1400px) {
+    .carousel-pagination {
+        margin-top: calc(var(--spacing-large) * 1.5);
+    }
+    
+    .pagination-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .carousel-pagination {
+        margin-top: calc(var(--spacing-large) * 2);
+    }
+    
+    .pagination-dot {
+        width: 12px;
+        height: 12px;
+    }
 }
 
 .pagination-dot {
